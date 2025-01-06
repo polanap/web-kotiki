@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet logicalFilePath="0002-insert-start-cosmetics.xml"
+               id="0002-insert-start-cosmetics.xml" author="polanap">
+        <insert tableName="cosmetic">
+            <column  name="type"  value="BACKGROUND"/>
+            <column  name="value"  value="field"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="MUZZLE"/>
+            <column  name="value"  value="cute"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="OUTFIT"/>
+            <column  name="value"  value="coat"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="COLOR"/>
+            <column  name="value"  value="ginger"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="COAT_TEXTURE"/>
+            <column  name="value"  value="basic"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
