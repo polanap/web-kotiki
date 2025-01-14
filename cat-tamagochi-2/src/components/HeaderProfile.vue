@@ -1,0 +1,83 @@
+<template>
+    <header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <nav class="nav">
+              <router-link class="nav__link" to="/cat">Главная страница</router-link>
+              <router-link class="nav__link" to="/friends">Мои друзья</router-link>
+            </nav>
+            <div class="header__logo">
+                <img src="../assets/cat.jpg" style="height: 40px; margin-bottom: -8px" alt="Logo" />
+                <p>Котомания</p>
+            </div>
+        </div>
+    </div>
+</header>
+</template>  
+
+<style scoped>
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.container {
+  width: 100%;
+}
+
+.header__inner {
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header__logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #9E9EE2;
+  display: inline-block;
+  width: 20%;
+}
+
+.header__logo img {
+  border-radius: 20px;
+  display: inline-block;
+}
+.header__logo p {
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Nav */
+.nav {
+  font-size: 18px;
+  vertical-align: top;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-left: 40px;
+  width: 60%;
+  /* margin-right: 10%; */
+}
+
+.nav__link {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 25px;
+  position: relative;
+
+  color: #9E9EE2;
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: color .1s linear;
+}
+
+</style>
+<script>
+</script>

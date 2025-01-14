@@ -1,0 +1,16 @@
+* {
+  margin: 0px 0px;
+}
+
+body {
+  /* min-height: 100vh; */
+  background-color: #E6E6FA;
+  margin: 0px 0px;
+}
+
+.cat {
+  position: absolute;
+  z-index: 30;
+  margin-top: -320px;
+  margin-left: -180px;
+}
