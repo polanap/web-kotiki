@@ -55,6 +55,9 @@
             <column name="set" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
+            <column name="url-key" type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <createTable tableName="food">

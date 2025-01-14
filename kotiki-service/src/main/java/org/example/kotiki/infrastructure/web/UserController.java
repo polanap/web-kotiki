@@ -22,7 +22,7 @@ public class UserController {
     private FriendsService friendsService;
 
     @GetMapping("/cats")
-    public ResponseEntity getUserCats(@RequestParam Integer userId) {
+    public ResponseEntity getUserCats(@RequestParam(required=false) Integer userId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         User userToFindCats = null;
@@ -39,7 +39,7 @@ public class UserController {
 
     }
     @GetMapping("/cosmetics")
-    public ResponseEntity getUserCosmeticsByType(@RequestParam Integer userId, @RequestParam String type) {
+    public ResponseEntity getUserCosmeticsByType(@RequestParam(required=false) Integer userId, @RequestParam String type) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Integer userToFindCosmetics = null;

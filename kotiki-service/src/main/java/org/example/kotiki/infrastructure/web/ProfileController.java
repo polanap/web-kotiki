@@ -24,7 +24,7 @@ public class ProfileController {
     FriendsService friendsService;
 
     @GetMapping("/")
-    public ResponseEntity getProfile(@RequestParam Integer userId) {
+    public ResponseEntity getProfile(@RequestParam(required=false) Integer userId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Integer userToFindProfileId = null;

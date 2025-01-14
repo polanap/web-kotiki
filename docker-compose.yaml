@@ -29,6 +29,11 @@ services:
 #      interval: 1s
 #      timeout: 5s
 #      retries: 10
+  
+  # s3:
+  #   image: zenko/cloudserver
+  #   ports:
+  #     - "8000:8000"
 
 volumes:
   db-data:

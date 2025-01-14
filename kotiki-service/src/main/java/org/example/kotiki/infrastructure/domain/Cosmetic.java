@@ -32,4 +32,7 @@ public class Cosmetic {
     @Enumerated(EnumType.STRING)
     @Column(name = "set")
     private CosmeticSet set;
+
+    @Column(name = "url-key")
+    private String urlKey;
 }

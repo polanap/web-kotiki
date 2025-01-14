@@ -42,12 +42,16 @@ public class CosmeticDTO {
   @SerializedName("set")
   private String set = null;
 
+  @SerializedName("url-key")
+  private String urlKey = null;
+
   public CosmeticDTO(Cosmetic cosmetic) {
     this.id = cosmetic.getId();
     this.type = cosmetic.getType().toString();
     this.value = cosmetic.getValue();
     this.rarity = cosmetic.getRarity();
     this.set = cosmetic.getSet().toString();
+    this.urlKey = cosmetic.getUrlKey().toString();
   }
 
 }

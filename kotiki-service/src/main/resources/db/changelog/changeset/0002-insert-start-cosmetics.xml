@@ -11,6 +11,7 @@
             <column  name="value"  value="field"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="basic-background"/>
         </insert>
 
         <insert tableName="cosmetic">
@@ -18,6 +19,7 @@
             <column  name="value"  value="cute"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="basic-muzzle"/>
         </insert>
 
         <insert tableName="cosmetic">
@@ -25,6 +27,7 @@
             <column  name="value"  value="coat"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="basic-outfit"/>
         </insert>
 
         <insert tableName="cosmetic">
@@ -32,6 +35,7 @@
             <column  name="value"  value="ginger"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="basic-color"/>
         </insert>
 
         <insert tableName="cosmetic">
@@ -39,6 +43,7 @@
             <column  name="value"  value="basic"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="basic-coat-texture"/>
         </insert>
 
     </changeSet>
