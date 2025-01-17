@@ -19,7 +19,7 @@ http://localhost:8181
 
 http://localhost:15432
 
--S3 storrage:
+- S3 storrage:
 
 http://localhost:8000
 
