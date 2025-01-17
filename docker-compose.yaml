@@ -23,17 +23,11 @@ services:
     volumes:
       - .//infrastructure//db:\docker-entrypoint-initdb.d
       - db-data:\var\lib\postgresql\data
-#    restart: unless-stopped
-#    healthcheck:
-#      test: [ "CMD-SHELL", "pg_isready", "--quiet" ]
-#      interval: 1s
-#      timeout: 5s
-#      retries: 10
-  
-  # s3:
-  #   image: zenko/cloudserver
-  #   ports:
-  #     - "8000:8000"
+        
+  s3:
+    image: scality/s3server
+    ports:
+      - "8000:8000"
 
 volumes:
   db-data:

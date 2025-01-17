@@ -7,11 +7,67 @@
     <changeSet logicalFilePath="0002-insert-start-cosmetics.xml"
                id="0002-insert-start-cosmetics.xml" author="polanap">
         <insert tableName="cosmetic">
-            <column  name="type"  value="BACKGROUND"/>
-            <column  name="value"  value="field"/>
+            <column  name="type"  value="BODY"/>
+            <column  name="value"  value="baige"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
-            <column  name="url-key"  value="basic-background"/>
+            <column  name="url-key"  value="body_baige"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="BODY"/>
+            <column  name="value"  value="ginger"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="body_ginger"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="COSTUME"/>
+            <column  name="value"  value="baby"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="baby_costume"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="COSTUME"/>
+            <column  name="value"  value="bow"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="bow_costume"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="COSTUME"/>
+            <column  name="value"  value="office"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="office_costume"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="HEAD"/>
+            <column  name="value"  value="baige"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="head_baige"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="HEAD"/>
+            <column  name="value"  value="ginger"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="head_ginger"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="MUZZLE"/>
+            <column  name="value"  value="angry"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="angry_muzzle"/>
         </insert>
 
         <insert tableName="cosmetic">
@@ -19,31 +75,39 @@
             <column  name="value"  value="cute"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
-            <column  name="url-key"  value="basic-muzzle"/>
+            <column  name="url-key"  value="cute_muzzle"/>
         </insert>
 
         <insert tableName="cosmetic">
-            <column  name="type"  value="OUTFIT"/>
-            <column  name="value"  value="coat"/>
+            <column  name="type"  value="MUZZLE"/>
+            <column  name="value"  value="funny"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
-            <column  name="url-key"  value="basic-outfit"/>
+            <column  name="url-key"  value="funny_muzzle"/>
         </insert>
 
         <insert tableName="cosmetic">
-            <column  name="type"  value="COLOR"/>
+            <column  name="type"  value="MUZZLE"/>
+            <column  name="value"  value="sad"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="sad_muzzle"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="TAIL"/>
+            <column  name="value"  value="baige"/>
+            <column  name="rarity"  value="1"/>
+            <column  name="set"  value="BASIC"/>
+            <column  name="url-key"  value="tail_baige"/>
+        </insert>
+
+        <insert tableName="cosmetic">
+            <column  name="type"  value="TAIL"/>
             <column  name="value"  value="ginger"/>
             <column  name="rarity"  value="1"/>
             <column  name="set"  value="BASIC"/>
-            <column  name="url-key"  value="basic-color"/>
-        </insert>
-
-        <insert tableName="cosmetic">
-            <column  name="type"  value="COAT_TEXTURE"/>
-            <column  name="value"  value="basic"/>
-            <column  name="rarity"  value="1"/>
-            <column  name="set"  value="BASIC"/>
-            <column  name="url-key"  value="basic-coat-texture"/>
+            <column  name="url-key"  value="tail_ginger"/>
         </insert>
 
     </changeSet>
