@@ -14,13 +14,19 @@ package org.example.kotiki.infrastructure.dto;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 import java.util.Objects;
+
+import org.example.kotiki.infrastructure.domain.Cat;
 /**
  * Cat
  */
 
+ @Data
 public class CatDTO {
   @SerializedName("id")
   private Integer id = null;
@@ -34,168 +40,15 @@ public class CatDTO {
   @SerializedName("owner-id")
   private Integer ownerId = null;
 
-  @SerializedName("breed")
-  private String breed = null;
-
   @SerializedName("stat-id")
   private Integer statId = null;
 
-  public CatDTO id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @Schema(example = "12", required = true, description = "")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public CatDTO name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @Schema(example = "Prince", required = true, description = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatDTO birth(LocalDateTime birth) {
-    this.birth = birth;
-    return this;
-  }
-
-   /**
-   * Get birth
-   * @return birth
-  **/
-  @Schema(example = "2016-08-29T09:12:33.001Z", required = true, description = "")
-  public LocalDateTime getBirth() {
-    return birth;
-  }
-
-  public void setBirth(LocalDateTime birth) {
-    this.birth = birth;
-  }
-
-  public CatDTO ownerId(Integer ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
-   /**
-   * Get ownerId
-   * @return ownerId
-  **/
-  @Schema(example = "1", required = true, description = "")
-  public Integer getOwnerId() {
-    return ownerId;
-  }
-
-  public void setOwnerId(Integer ownerId) {
-    this.ownerId = ownerId;
-  }
-
-  public CatDTO breed(String breed) {
-    this.breed = breed;
-    return this;
-  }
-
-   /**
-   * Get breed
-   * @return breed
-  **/
-  @Schema(example = "siam", required = true, description = "")
-  public String getBreed() {
-    return breed;
-  }
-
-  public void setBreed(String breed) {
-    this.breed = breed;
-  }
-
-  public CatDTO statId(Integer statId) {
-    this.statId = statId;
-    return this;
-  }
-
-   /**
-   * Get statId
-   * @return statId
-  **/
-  @Schema(example = "4", required = true, description = "")
-  public Integer getStatId() {
-    return statId;
-  }
-
-  public void setStatId(Integer statId) {
-    this.statId = statId;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CatDTO cat = (CatDTO) o;
-    return Objects.equals(this.id, cat.id) &&
-        Objects.equals(this.name, cat.name) &&
-        Objects.equals(this.birth, cat.birth) &&
-        Objects.equals(this.ownerId, cat.ownerId) &&
-        Objects.equals(this.breed, cat.breed) &&
-        Objects.equals(this.statId, cat.statId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, birth, ownerId, breed, statId);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Cat {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    birth: ").append(toIndentedString(birth)).append("\n");
-    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-    sb.append("    breed: ").append(toIndentedString(breed)).append("\n");
-    sb.append("    statId: ").append(toIndentedString(statId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+  public CatDTO(Cat cat){
+    this.id = cat.getId();
+    this.name = cat.getName();
+    this.birth = cat.getBirth();
+    this.ownerId = cat.getOwnerId();
+    this.statId = cat.getStatId();
   }
 
 }

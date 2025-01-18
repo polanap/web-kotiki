@@ -51,7 +51,7 @@ public class CatController {
         if (cat.getOwnerId() != curentUser.getId()) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        ArrayList<CosmeticDTO> cosmetics = catService.applyCosmetics(catId, request, curentUser);
+        ArrayList<CosmeticDTO> cosmetics = catService.applyCosmeticsByRequest(catId, request, curentUser);
         var responseBody = new CatsCosmeticsDTO(catId, cosmetics);
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }

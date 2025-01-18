@@ -10,7 +10,7 @@
             <column  name="type"  value="BODY"/>
             <column  name="value"  value="baige"/>
             <column  name="rarity"  value="1"/>
-            <column  name="set"  value="BASIC"/>
+            <column  name="set"  value="START"/>
             <column  name="url-key"  value="body_baige"/>
         </insert>
 
@@ -50,7 +50,7 @@
             <column  name="type"  value="HEAD"/>
             <column  name="value"  value="baige"/>
             <column  name="rarity"  value="1"/>
-            <column  name="set"  value="BASIC"/>
+            <column  name="set"  value="START"/>
             <column  name="url-key"  value="head_baige"/>
         </insert>
 
@@ -74,7 +74,7 @@
             <column  name="type"  value="MUZZLE"/>
             <column  name="value"  value="cute"/>
             <column  name="rarity"  value="1"/>
-            <column  name="set"  value="BASIC"/>
+            <column  name="set"  value="START"/>
             <column  name="url-key"  value="cute_muzzle"/>
         </insert>
 
@@ -98,7 +98,7 @@
             <column  name="type"  value="TAIL"/>
             <column  name="value"  value="baige"/>
             <column  name="rarity"  value="1"/>
-            <column  name="set"  value="BASIC"/>
+            <column  name="set"  value="START"/>
             <column  name="url-key"  value="tail_baige"/>
         </insert>
 

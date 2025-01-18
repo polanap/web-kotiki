@@ -18,10 +18,14 @@ public interface UserCosmeticDAO extends JpaRepository<UsersCosmetic, Integer> {
 
     @Query("""
     select 
-    c.id,
-    c.type,
-    c.rarity,
-    c.set
+    new org.example.kotiki.infrastructure.dto.CosmeticDTO(
+        c.id,
+        c.type,
+        c.value,
+        c.rarity,
+        c.set,
+        c.urlKey
+    )
      from UsersCosmetic u join Cosmetic c on u.cosmeticId = c.id where u.userId = :id and c.type = :type
 """)
     List<CosmeticDTO> getUserCosmeticsByType(Integer id, String type);

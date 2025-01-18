@@ -14,6 +14,7 @@ package org.example.kotiki.infrastructure.dto;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Objects;
 /**
  * CosmeticTypes
  */
-
+@Data
 public class CosmeticTypesDTO {
   @SerializedName("cosmetic-types")
   private List<String> cosmeticTypes = new ArrayList<String>();

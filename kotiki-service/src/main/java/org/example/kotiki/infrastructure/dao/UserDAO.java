@@ -16,7 +16,7 @@ public interface UserDAO extends JpaRepository<User, Integer>{
     User findByUsername (String username);
 
     @Query("""
-    select c from Cat c where c.ownerId = :id
+    select new org.example.kotiki.infrastructure.dto.CatDTO(c) from Cat c where c.ownerId = :id
 """)
     ArrayList<CatDTO> getCats(Integer id);
 }

@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 
 import javax.validation.ValidationException;
 
+import org.example.kotiki.infrastructure.domain.Profile;
+
 @Data
 public class ProfileDTO {
   @SerializedName("id")
@@ -41,14 +43,24 @@ public class ProfileDTO {
   @SerializedName("favorite-cat-breed")
   private String favoriteCatBreed = null;
 
+  public ProfileDTO(Profile profile){
+    this.id = profile.getId();
+    this.userId = profile.getUserId();
+    this.firstname = profile.getFirstname();
+    this.lastname = profile.getLastname();
+    this.birth = profile.getBirth();
+    this.aboutMe = profile.getAboutMe();
+    this.favoriteCatBreed = profile.getFavoriteCatBreed();
+  }
+
   public void validate() throws ValidationException {
-    if (firstname != null && firstname.length() > 50)
-      throw new ValidationException("firstname must be less than or equal to 50");
-    if (lastname != null && lastname.length() > 50)
-      throw new ValidationException("lastname must be less than or equal to 50");
+    if (firstname != null && firstname.length() > 30)
+      throw new ValidationException("firstname must be less than or equal to 30");
+    if (lastname != null && lastname.length() > 30)
+      throw new ValidationException("lastname must be less than or equal to 30");
     if (birth != null && (birth.isBefore(LocalDateTime.now()) && birth.getYear()>=1900 ))
       throw new ValidationException("birth must be before now and past then 1900-01-01");
-    if (favoriteCatBreed != null && favoriteCatBreed.length() > 50)
-      throw new ValidationException("favorite-cat-breed must be less than or equal to 50");
+    if (favoriteCatBreed != null && favoriteCatBreed.length() > 30)
+      throw new ValidationException("favorite-cat-breed must be less than or equal to 30");
   }
 }

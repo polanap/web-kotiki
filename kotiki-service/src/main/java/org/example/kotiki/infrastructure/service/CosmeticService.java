@@ -1,6 +1,8 @@
 package org.example.kotiki.infrastructure.service;
 
 import jakarta.annotation.PostConstruct;
+import lombok.Getter;
+
 import org.example.kotiki.application.cosmetic.CosmeticInterface;
 import org.example.kotiki.application.cosmetic.CosmeticType;
 import org.example.kotiki.infrastructure.dao.CosmeticDAO;
@@ -23,15 +25,16 @@ public class CosmeticService implements CosmeticInterface {
     @Autowired
     UserCosmeticDAO userCosmeticDAO;
 
+    @Getter
     private ArrayList<Cosmetic> defaultCosmetics;
 
 
     @PostConstruct
-    public void getDefaultCosmetics() {
+    public void getDefaultCosmeticsFromDatabase() {
         defaultCosmetics = cosmeticDAO.getDefaultCosmetics();
     }
 
-    public void setDefaultCosmetics(User user){
+    public void setDefaultCosmeticsToUser(User user){
         setCosmetics(defaultCosmetics, user);
     }
 
@@ -45,9 +48,10 @@ public class CosmeticService implements CosmeticInterface {
         return cosmeticDAO.getByType(cosmetic);
     }
 
-    public void setCosmetics(ArrayList<Cosmetic> cosmetics, User user) {
+    public void setCosmetics(List<Cosmetic> cosmetics, User user) {
         cosmetics.stream()
                 .map(cosmetic -> new UsersCosmetic(null, cosmetic.getId(), user.getId(), cosmetic.getType()))
                 .forEach(cosmetic -> userCosmeticDAO.save(cosmetic));
     }
+    
 }

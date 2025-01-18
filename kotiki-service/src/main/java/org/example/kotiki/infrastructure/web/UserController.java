@@ -25,7 +25,7 @@ public class UserController {
     public ResponseEntity getUserCats(@RequestParam(required=false) Integer userId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
-        User userToFindCats = null;
+        User userToFindCats = curentUser;
         if (userId!=null){
             User requestedUser = userService.findUserById(userId);
             if (!friendsService.isFriends(curentUser, requestedUser)){
@@ -42,7 +42,7 @@ public class UserController {
     public ResponseEntity getUserCosmeticsByType(@RequestParam(required=false) Integer userId, @RequestParam String type) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
-        Integer userToFindCosmetics = null;
+        Integer userToFindCosmetics = curentUser.getId();
         if (userId!=null){
             User requestedUser = userService.findUserById(userId);
             if (!friendsService.isFriends(curentUser, requestedUser)){

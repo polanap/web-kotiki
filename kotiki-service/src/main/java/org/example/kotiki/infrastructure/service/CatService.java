@@ -58,13 +58,18 @@ public class CatService{
         return catDAO.getAppliedCosmetics(catId);
     }
 
+    public ArrayList<CosmeticDTO> applyCosmeticsByRequest(Integer catId, SendCatsCosmeticsDTO request, User user){
+        List<Integer> cosmeticIds = request.getCosmetics();
+        return applyCosmetics(catId, cosmeticIds, user);
+    }
+
     @Transactional
-    public ArrayList<CosmeticDTO> applyCosmetics(Integer catId, SendCatsCosmeticsDTO request, User user){
-        ArrayList<Integer> cosmeticIds = request.getCosmetics();
+    public ArrayList<CosmeticDTO> applyCosmetics(Integer catId, List<Integer> cosmeticIds, User user){
         List<CatsCosmetic> cosmetics = userCosmeticDAO.getAvaliableUserCosmetics(user.getId())
                 .stream()
                 .filter(cosm -> cosmeticIds.contains(cosm.getUserId()))
                 .map(cosm -> new CatsCosmetic(catId, cosm.getId(), cosm.getCosmeticType()))
+                .peek(cosm -> catsCosmeticDAO.deleteAllByTypeAndCatId(catId, cosm.getCosmeticType()))
                 .map(cosm -> catsCosmeticDAO.save(cosm))
                 .toList();
         return catDAO.getCosmeticsByCatsCosmetic(cosmetics);
@@ -74,6 +79,9 @@ public class CatService{
         CatsCosmetic cosmetic = catsCosmeticDAO.getByUserAndCosmeticId(cosmId, user.getId());
         if(cosmetic == null){ return null;  }
         if(!catsCosmeticDAO.existsById(cosmetic.getId())){
+            return null;
+        }
+        if(cosmetic.getCosmeticType().disapplieble()){
             return null;
         }
         catsCosmeticDAO.delete(cosmetic);

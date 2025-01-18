@@ -14,6 +14,7 @@ package org.example.kotiki.infrastructure.dto;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -21,6 +22,7 @@ import java.util.UUID;
  * UserLogin
  */
 
+ @Data
 public class UserLoginDTO {
   @SerializedName("username")
   private UUID username = null;

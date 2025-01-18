@@ -1,5 +1,7 @@
 package org.example.kotiki.infrastructure.web;
 
+import javax.validation.ValidationException;
+
 import org.example.kotiki.infrastructure.dto.ErrorMessageDTO;
 import org.example.kotiki.infrastructure.dto.UserRegistrationDTO;
 import org.example.kotiki.infrastructure.service.UserService;
@@ -21,7 +23,7 @@ public class RegistrationController {
         try{
             userService.saveUserWithDefaults(request);
             return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e) {
+        }catch (ValidationException e) {
             return new ResponseEntity<>(new ErrorMessageDTO(e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }

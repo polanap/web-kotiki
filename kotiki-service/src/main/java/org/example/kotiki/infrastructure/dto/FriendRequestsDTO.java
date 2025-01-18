@@ -14,6 +14,7 @@ package org.example.kotiki.infrastructure.dto;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Objects;
  * FriendRequests
  */
 
+ @Data
 public class FriendRequestsDTO {
   @SerializedName("users")
   private List<FriendRequestDTO> users = null;

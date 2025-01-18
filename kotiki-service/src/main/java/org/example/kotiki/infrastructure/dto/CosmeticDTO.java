@@ -14,8 +14,12 @@ package org.example.kotiki.infrastructure.dto;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import org.example.kotiki.application.cosmetic.CosmeticSet;
+import org.example.kotiki.application.cosmetic.CosmeticType;
 import org.example.kotiki.infrastructure.domain.Cosmetic;
 
 import java.math.BigDecimal;
@@ -52,6 +56,15 @@ public class CosmeticDTO {
     this.rarity = cosmetic.getRarity();
     this.set = cosmetic.getSet().toString();
     this.urlKey = cosmetic.getUrlKey().toString();
+  }
+  public CosmeticDTO(Integer id, CosmeticType type, String value, Double rarity, CosmeticSet set, String urlKey){
+    this.id = id;
+    this.type = type.toString();
+    this.value = value;
+    this.rarity = rarity;
+    this.set = set.toString();
+    this.urlKey = urlKey;
+
   }
 
 }

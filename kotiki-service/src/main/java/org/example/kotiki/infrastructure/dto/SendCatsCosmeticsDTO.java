@@ -28,6 +28,6 @@ public class SendCatsCosmeticsDTO {
   private Integer catId = null;
 
   @SerializedName("cosmetics")
-  private ArrayList<Integer> cosmetics = null;
+  private List<Integer> cosmetics = null;
 
 }

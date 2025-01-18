@@ -1,5 +1,6 @@
 package org.example.kotiki.application.cosmetic;
 
 public enum CosmeticSet {
-    BASIC
+    BASIC,
+    START
 }

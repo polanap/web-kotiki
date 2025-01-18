@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.ValidationException;
+
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
@@ -63,22 +65,28 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public User saveUser(UserRegistrationDTO request) throws Exception {
+    public User saveUser(UserRegistrationDTO request) throws ValidationException {
         if (request.getUsername()==null){
-            throw new Exception("Username is required");
+            throw new ValidationException("Username is required");
         }
         if (request.getPassword()==null){
-            throw new Exception("Password is required");
+            throw new ValidationException("Password is required");
         }
         if (request.getConfirmPassword()==null){
-            throw new Exception("Confirm password is required");
+            throw new ValidationException("Confirm password is required");
         }
         if (!request.getPassword().equals(request.getConfirmPassword())){
-            throw new Exception("Passwords not equals");
+            throw new ValidationException("Passwords not equals");
         }
 
         if (userRepository.findByUsername(request.getUsername()) != null) {
-            throw new Exception("User with this username already exist");
+            throw new ValidationException("User with this username already exist");
+        }
+        if (request.getUsername().length()<3 && request.getUsername().length()>30){
+            throw new ValidationException("username must be less than or equal to 30");
+        }
+        if (request.getPassword().length()<3 && request.getPassword().length()>30){
+            throw new ValidationException("password must be less than or equal to 30");
         }
 
         User user = new User();
@@ -108,10 +116,10 @@ public class UserService implements UserDetailsService {
         profileDAO.save(profile);
     }
 
-    // @Transactional
-    public void saveUserWithDefaults(UserRegistrationDTO request) throws Exception {
+    @Transactional
+    public void saveUserWithDefaults(UserRegistrationDTO request) throws ValidationException {
         User user = this.saveUser(request);
-        cosmeticService.setDefaultCosmetics(user);
+        cosmeticService.setDefaultCosmeticsToUser(user);
         this.makeProfile(user);
         this.setDefaultCat(user);
     }
