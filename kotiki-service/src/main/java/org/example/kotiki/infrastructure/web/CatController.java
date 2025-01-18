@@ -32,6 +32,9 @@ public class CatController {
 
     @GetMapping("/cosmetics")
     public ResponseEntity getCatCosmetics(@RequestParam Integer catId) {
+        if(!catService.existCat(catId)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Cat cat = catService.getCat(catId);
@@ -45,6 +48,9 @@ public class CatController {
 
     @PostMapping("/cosmetics")
     public ResponseEntity applyCatCosmetics(@RequestBody SendCatsCosmeticsDTO request, @RequestParam Integer catId) {
+        if(!catService.existCat(catId)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Cat cat = catService.getCat(catId);
@@ -58,6 +64,9 @@ public class CatController {
 
     @DeleteMapping("/cosmetics")
     public ResponseEntity disapplyCosmetic(@RequestParam Integer catId, @RequestParam Integer cosmId) {
+        if(!catService.existCat(catId)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Cat cat = catService.getCat(catId);
@@ -70,6 +79,9 @@ public class CatController {
 
     @GetMapping("/stat")
     public ResponseEntity getStat(@RequestParam Integer catId) {
+        if(!catService.existCat(catId)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Cat cat = catService.getCat(catId);
@@ -82,6 +94,9 @@ public class CatController {
 
     @PostMapping("/food")
     public ResponseEntity toFeed(@RequestParam Integer catId) {
+        if(!catService.existCat(catId)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Cat cat = catService.getCat(catId);
@@ -94,6 +109,9 @@ public class CatController {
 
     @PostMapping("/petting")
     public ResponseEntity toPet(@RequestParam Integer catId) {
+        if(!catService.existCat(catId)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Cat cat = catService.getCat(catId);

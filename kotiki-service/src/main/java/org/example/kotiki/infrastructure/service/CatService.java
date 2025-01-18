@@ -54,6 +54,10 @@ public class CatService{
         return catDAO.getById(id);
     }
 
+    public boolean existCat(Integer catId){
+        return catDAO.existsById(catId);
+    }
+    
     public ArrayList<CosmeticDTO> getCatsCosmetics(Integer catId){
         return catDAO.getAppliedCosmetics(catId);
     }

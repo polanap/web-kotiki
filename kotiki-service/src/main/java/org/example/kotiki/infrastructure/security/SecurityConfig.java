@@ -42,7 +42,11 @@ public class SecurityConfig {
                         configurer
                                 .requestMatchers("/login", "/registration","/")
                                 .permitAll()
-                                .anyRequest().authenticated());
+                                .anyRequest().authenticated())
+                .exceptionHandling(exh -> 
+                        exh.authenticationEntryPoint( (request, response, ex) -> {
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                        }));
         return httpSecurity.build();
     }
 
