@@ -20,8 +20,8 @@ import java.util.List;
 @Service
 @SessionScope
 public class CatService{
-    private final double satietyPerSec = 0.0017;
-    private final double happyPerSec = 0.0017;
+    private final double satietyPerSec = 0.00017;
+    private final double happyPerSec = 0.00017;
     private final double foodPoints = 0.1;
     private final double happyPoints = 0.1;
 
@@ -105,9 +105,13 @@ public class CatService{
         double satiety = stats.getLastSatietyDegree() -
                 Duration.between(stats.getLastFeed(), LocalDateTime.now()).getSeconds() * satietyPerSec + foodPoints;
         satiety = (satiety > 0) ? satiety : 0;
+        satiety = (satiety < 1) ? satiety : 1;
         double happy = stats.getLastHappyDegree() -
                 Duration.between(stats.getLastFun(), LocalDateTime.now()).getSeconds() * happyPerSec;
         happy = (happy > 0) ? happy : 0;
+        stats.setLastFeed(LocalDateTime.now());
+        stats.setLastSatietyDegree(satiety);
+        statsDAO.save(stats);
 
         return new StatDTO(catId, satiety, happy);
     }
@@ -120,7 +124,10 @@ public class CatService{
         double happy = stats.getLastHappyDegree() -
                 Duration.between(stats.getLastFun(), LocalDateTime.now()).getSeconds() * happyPerSec + happyPoints;
         happy = (happy > 0) ? happy : 0;
-
+        happy = (happy < 1) ? happy : 1;
+        stats.setLastFun(LocalDateTime.now());
+        stats.setLastHappyDegree(satiety);
+        statsDAO.save(stats);
         return new StatDTO(catId, satiety, happy);
     }
 
