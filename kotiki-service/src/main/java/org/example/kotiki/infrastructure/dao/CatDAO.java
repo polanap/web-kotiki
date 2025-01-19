@@ -25,7 +25,7 @@ public interface CatDAO extends JpaRepository<Cat, Integer> {
         c.urlKey
     )
     from CatsCosmetic cc join UsersCosmetic uc 
-    on cc.userCosmeticId=uc.id join Cosmetic c on uc.cosmeticId=c.id where cc.catId= :cat_id
+    on cc.userCosmeticId=uc.id join Cosmetic c on uc.cosmeticId=c.id where cc.catId= :catId
 """)
     public ArrayList<CosmeticDTO> getAppliedCosmetics(Integer catId);
 

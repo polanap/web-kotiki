@@ -1,5 +1,6 @@
 package org.example.kotiki.infrastructure.dao;
 
+import org.example.kotiki.application.cosmetic.CosmeticType;
 import org.example.kotiki.infrastructure.domain.UsersCosmetic;
 import org.example.kotiki.infrastructure.dto.CosmeticDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,5 +29,5 @@ public interface UserCosmeticDAO extends JpaRepository<UsersCosmetic, Integer> {
     )
      from UsersCosmetic u join Cosmetic c on u.cosmeticId = c.id where u.userId = :id and c.type = :type
 """)
-    List<CosmeticDTO> getUserCosmeticsByType(Integer id, String type);
+    List<CosmeticDTO> getUserCosmeticsByType(Integer id, CosmeticType type);
 }

@@ -135,7 +135,7 @@ public class UserService implements UserDetailsService {
         return profileDAO.findByUserId(userId);
     }
     public UserCosmeticsDTO getUserCosmeticsByType(Integer userId, CosmeticType type) {
-        List<CosmeticDTO> cosmetics = userCosmeticDAO.getUserCosmeticsByType(userId, type.toString().toUpperCase());
+        List<CosmeticDTO> cosmetics = userCosmeticDAO.getUserCosmeticsByType(userId, type);
         return new UserCosmeticsDTO(cosmetics);
     }
 
