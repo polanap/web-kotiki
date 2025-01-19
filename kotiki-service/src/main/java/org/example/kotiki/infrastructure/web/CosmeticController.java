@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/cosmetic")
+@RequestMapping("/cosmetics")
 public class CosmeticController {
     @Autowired
     CosmeticService cosmeticService;
-    @GetMapping("/cosmetics")
+    @GetMapping()
     public ResponseEntity home() {
         CosmeticsDTO responseDTO = new CosmeticsDTO();
         responseDTO.setCosmetics(CosmeticType.values());

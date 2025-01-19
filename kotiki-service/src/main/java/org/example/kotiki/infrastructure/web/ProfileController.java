@@ -23,11 +23,11 @@ public class ProfileController {
     @Autowired
     FriendsService friendsService;
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity getProfile(@RequestParam(required=false) Integer userId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
-        Integer userToFindProfileId = null;
+        Integer userToFindProfileId = curentUser.getId();
         if (userId!=null){
             User requestedUser = userService.findUserById(userId);
             if (!friendsService.isFriends(curentUser, requestedUser)){
@@ -40,11 +40,11 @@ public class ProfileController {
         return new ResponseEntity<>(profile, HttpStatus.OK);
     }
 
-    @PutMapping("/")
+    @PutMapping()
     public ResponseEntity updateProfile(@RequestBody ProfileDTO request, @RequestParam Integer userId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
-        Integer userToFindProfileId = null;
+        Integer userToFindProfileId = curentUser.getId();
         if (userId!=null){
             User requestedUser = userService.findUserById(userId);
             if (!friendsService.isFriends(curentUser, requestedUser)){
