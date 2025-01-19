@@ -21,8 +21,8 @@ public interface ProfileDAO extends JpaRepository<Profile, Integer> {
     @Modifying
     @Query("""
     update Profile p set 
-    p.firstname = :firstname,
-    p.lastname = :lastname,
+    p.firstname = :firstName,
+    p.lastname = :lastName,
     p.birth = :birth,
     p.aboutMe = :aboutMe,
     p.favoriteCatBreed = :favoriteCatBreed

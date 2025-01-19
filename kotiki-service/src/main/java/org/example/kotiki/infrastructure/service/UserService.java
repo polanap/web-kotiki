@@ -129,6 +129,7 @@ public class UserService implements UserDetailsService {
         return profile;
     }
 
+    @Transactional
     public ProfileDTO updateProfile(ProfileDTO request, Integer userId) {
         profileDAO.updateByUserId(userId, request.getFirstname(), request.getLastname(),
                 request.getBirth(), request.getAboutMe(), request.getFavoriteCatBreed());

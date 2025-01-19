@@ -13,7 +13,11 @@
 package org.example.kotiki.infrastructure.dto;
 
 import com.google.gson.annotations.SerializedName;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 import javax.validation.ValidationException;
@@ -21,26 +25,21 @@ import javax.validation.ValidationException;
 import org.example.kotiki.infrastructure.domain.Profile;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProfileDTO {
-  @SerializedName("id")
   private Integer id = null;
 
-  @SerializedName("user-id")
   private Integer userId = null;
 
-  @SerializedName("firstname")
   private String firstname = null;
 
-  @SerializedName("lastname")
   private String lastname = null;
 
-  @SerializedName("birth")
   private LocalDateTime birth = null;
 
-  @SerializedName("about-me")
   private String aboutMe = null;
 
-  @SerializedName("favorite-cat-breed")
   private String favoriteCatBreed = null;
 
   public ProfileDTO(Profile profile){

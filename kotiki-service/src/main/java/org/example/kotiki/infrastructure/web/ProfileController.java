@@ -41,7 +41,7 @@ public class ProfileController {
     }
 
     @PutMapping()
-    public ResponseEntity updateProfile(@RequestBody ProfileDTO request, @RequestParam Integer userId) {
+    public ResponseEntity updateProfile(@RequestBody ProfileDTO request, @RequestParam(required=false) Integer userId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User curentUser = (User) authentication.getPrincipal();
         Integer userToFindProfileId = curentUser.getId();
