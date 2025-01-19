@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StatsDAO extends JpaRepository<Stats, Integer> {
     @Query("""
-    SELECT s FROM Stats s JOIN Cat c ON s.id = c.statId
+    SELECT s FROM Stats s JOIN Cat c ON s.id = c.statId where c.id = :catId
 """)
     public Stats getByCatId(Integer catId);
 }
