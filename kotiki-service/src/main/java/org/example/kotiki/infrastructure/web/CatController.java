@@ -5,6 +5,7 @@ import org.example.kotiki.infrastructure.domain.User;
 import org.example.kotiki.infrastructure.dto.CatsCosmeticsDTO;
 import org.example.kotiki.infrastructure.dto.CosmeticDTO;
 import org.example.kotiki.infrastructure.dto.SendCatsCosmeticsDTO;
+import org.example.kotiki.infrastructure.exceptions.TypeException;
 import org.example.kotiki.infrastructure.service.CatService;
 import org.example.kotiki.infrastructure.service.FriendsService;
 import org.example.kotiki.infrastructure.service.UserService;
@@ -57,9 +58,16 @@ public class CatController {
         if (cat.getOwnerId() != curentUser.getId()) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        ArrayList<CosmeticDTO> cosmetics = catService.applyCosmeticsByRequest(catId, request, curentUser);
-        var responseBody = new CatsCosmeticsDTO(catId, cosmetics);
-        return new ResponseEntity<>(responseBody, HttpStatus.OK);
+        try{
+            ArrayList<CosmeticDTO> cosmetics = catService.applyCosmeticsByRequest(catId, request, curentUser);
+            var responseBody = new CatsCosmeticsDTO(catId, cosmetics);
+            return new ResponseEntity<>(responseBody, HttpStatus.OK);  
+        }catch (TypeException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);  
+        }
+        // ArrayList<CosmeticDTO> cosmetics = catService.applyCosmeticsByRequest(catId, request, curentUser);
+        // var responseBody = new CatsCosmeticsDTO(catId, cosmetics);
+        // return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }
 
     @DeleteMapping("/cosmetics")
@@ -74,6 +82,9 @@ public class CatController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         CosmeticDTO cosmetic = catService.disapplyCosmetic(catId, cosmId, curentUser);
+        if (cosmetic == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>(cosmetic, HttpStatus.OK);
     }
 

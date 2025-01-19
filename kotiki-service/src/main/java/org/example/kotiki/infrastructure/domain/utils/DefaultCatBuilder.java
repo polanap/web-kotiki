@@ -1,5 +1,6 @@
 package org.example.kotiki.infrastructure.domain.utils;
 
+import org.apache.logging.log4j.*;
 import org.example.kotiki.application.cosmetic.CosmeticSet;
 import org.example.kotiki.infrastructure.dao.CatDAO;
 import org.example.kotiki.infrastructure.dao.StatsDAO;
@@ -8,6 +9,7 @@ import org.example.kotiki.infrastructure.domain.CatsCosmetic;
 import org.example.kotiki.infrastructure.domain.Cosmetic;
 import org.example.kotiki.infrastructure.domain.Stats;
 import org.example.kotiki.infrastructure.domain.User;
+import org.example.kotiki.infrastructure.exceptions.TypeException;
 import org.example.kotiki.infrastructure.service.CatService;
 import org.example.kotiki.infrastructure.service.CosmeticService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
 public class DefaultCatBuilder {
 
+    Logger log = LogManager.getLogger("log");
+    
     @Autowired
     StatsDAO statsDAO;
 
@@ -52,7 +57,12 @@ public class DefaultCatBuilder {
             .filter(cosmetic -> cosmetic.getSet()==CosmeticSet.START)
             .map(cosmetic -> cosmetic.getId())
             .toList();
-        catService.applyCosmetics(catId, startCosmetics, owner);
+        log.info(startCosmetics);
+        try{
+            catService.applyCosmetics(catId, startCosmetics, owner);
+        }catch (TypeException e){
+            
+        }
 
     }
 

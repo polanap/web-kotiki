@@ -24,8 +24,8 @@ import java.util.Objects;
  */
 @Data
 public class SendCatsCosmeticsDTO {
-  @SerializedName("cat-id")
-  private Integer catId = null;
+  // @SerializedName("cat-id")
+  // private Integer catId = null;
 
   @SerializedName("cosmetics")
   private List<Integer> cosmetics = null;

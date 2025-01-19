@@ -3,11 +3,11 @@ package org.example.kotiki.application.cosmetic;
 public enum CosmeticType {
     BACKGROUND{
         @Override
-        public boolean disapplieble(){return true;}
+        public boolean disapplieble(){return false;}
     },
     MUZZLE{
         @Override
-        public boolean disapplieble(){return false;}
+        public boolean disapplieble(){return true;}
     },
     COSTUME{
         @Override

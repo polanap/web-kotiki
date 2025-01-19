@@ -7,6 +7,7 @@ import org.example.kotiki.infrastructure.dto.CosmeticDTO;
 import org.example.kotiki.infrastructure.dto.SendCatsCosmeticsDTO;
 import org.example.kotiki.infrastructure.dto.StatDTO;
 import org.example.kotiki.infrastructure.dto.UserCosmeticsDTO;
+import org.example.kotiki.infrastructure.exceptions.TypeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,18 +63,30 @@ public class CatService{
         return catDAO.getAppliedCosmetics(catId);
     }
 
-    public ArrayList<CosmeticDTO> applyCosmeticsByRequest(Integer catId, SendCatsCosmeticsDTO request, User user){
+    public ArrayList<CosmeticDTO> applyCosmeticsByRequest(Integer catId, SendCatsCosmeticsDTO request, User user) throws TypeException{
         List<Integer> cosmeticIds = request.getCosmetics();
         return applyCosmetics(catId, cosmeticIds, user);
     }
 
     @Transactional
-    public ArrayList<CosmeticDTO> applyCosmetics(Integer catId, List<Integer> cosmeticIds, User user){
+    public ArrayList<CosmeticDTO> applyCosmetics(Integer catId, List<Integer> cosmeticIds, User user) throws TypeException{
         List<CatsCosmetic> cosmetics = userCosmeticDAO.getAvaliableUserCosmetics(user.getId())
                 .stream()
-                .filter(cosm -> cosmeticIds.contains(cosm.getUserId()))
+                .filter(cosm -> cosmeticIds.contains(cosm.getCosmeticId()))
                 .map(cosm -> new CatsCosmetic(catId, cosm.getId(), cosm.getCosmeticType()))
-                .peek(cosm -> catsCosmeticDAO.deleteAllByTypeAndCatId(catId, cosm.getCosmeticType()))
+                // .peek(cosm -> catsCosmeticDAO.deleteAllByTypeAndCatId(catId, cosm.getCosmeticType()))
+                // .map(cosm -> catsCosmeticDAO.save(cosm))
+                .toList();
+        List<CosmeticType> types = cosmetics.stream()
+                .map(cosm -> cosm.getCosmeticType())
+                .toList();
+        if (types.size() != types.stream().distinct().count()){
+            throw new TypeException();
+        }
+        cosmetics.stream()
+                .forEach(cosm -> catsCosmeticDAO.deleteAllByTypeAndCatId(catId, cosm.getCosmeticType()));
+        catsCosmeticDAO.flush();
+        cosmetics.stream()
                 .map(cosm -> catsCosmeticDAO.save(cosm))
                 .toList();
         return catDAO.getCosmeticsByCatsCosmetic(cosmetics);

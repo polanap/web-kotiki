@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import org.example.kotiki.application.cosmetic.CosmeticType;
 
 @Entity
-@Table(name = "cats-cosmetic", uniqueConstraints={
+@Table(name = "cats_cosmetic", uniqueConstraints={
         @UniqueConstraint(columnNames = {"catId", "cosmetic_type"})
 })
 @Data

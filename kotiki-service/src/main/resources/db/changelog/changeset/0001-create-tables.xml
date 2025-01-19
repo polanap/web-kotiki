@@ -24,7 +24,7 @@
             </column>
         </createTable>
 
-        <createTable tableName="cats-cosmetic">
+        <createTable tableName="cats_cosmetic">
             <column name="id" type="serial">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
